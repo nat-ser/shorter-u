@@ -9,11 +9,14 @@ class UrlsController < ApplicationController
     @url = Url.find_or_initialize_by(url_params)
     respond_to do |format|
       if @url.save
-        format.html { redirect_to root_url, notice: 'url link created successfully'}
+        format.html { }
         format.js { }
         format.json { }
+        flash.now[:success] = "Here's your shortened url"
       else
-        flash[:error] = @url.error.full_messages
+        format.html { }
+        format.js { }
+        flash.now[:danger] = @url.errors.full_messages.first
         render :index
       end
     end
