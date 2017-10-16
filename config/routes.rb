@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: "urls#index"
 
   resources :urls, only: [:index, :create]
+
+  get "/:encoded_id", to: "urls#show"
 end

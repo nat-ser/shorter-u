@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20171015194331) do
 
   create_table "urls", force: :cascade do |t|
     t.string   "full_address"
-    t.integer  "count",        default: 0
+    t.integer  "visit_count",  default: 0
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
