@@ -6,7 +6,7 @@ class UrlsController < ApplicationController
   end
 
   def create
-    @url = Url.new(url_params)
+    @url = Url.find_or_initialize_by(url_params)
     respond_to do |format|
       if @url.save
         format.html { redirect_to root_url, notice: 'url link created successfully'}
