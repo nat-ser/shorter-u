@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root to: "urls#index"
 
   resources :urls, only: [:index, :create]
+
+  get "/:friendly_path", to: "urls#show"
+
+  match "*a", to: "application#render_404", via: :all
 end

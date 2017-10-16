@@ -1,6 +1,6 @@
-<%= form_for @url, url: {action: "create"}, html: { id:"url-form" } do |f| %>
+<%= form_for @url, url: {action: "create"}, remote: true, html: { id:"url-form" } do |f| %>
   <div class="row">
-    <%= f.text_field :full_address, class:"col-md-10 col-12 url-input-field", placeholder: "Type your looooooong url here" %>
-    <%= f.submit "Shorten", class:"btn btn-primary btn-lg col-md-2 col-12" %>
+    <%= f.text_field :full_address, class:"col-sm-10 url-input-field", placeholder: "Type your looooooong url here" %>
+    <%= f.submit "Shorten", class:"btn btn-primary btn-lg col-sm-2" %>
   </div>
 <% end %>
