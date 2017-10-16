@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   resources :urls, only: [:index, :create]
 
-  get "/:encoded_id", to: "urls#show"
+  get "/:friendly_path", to: "urls#show"
+
+  match "*a", to: "application#render_404", via: :all
 end
