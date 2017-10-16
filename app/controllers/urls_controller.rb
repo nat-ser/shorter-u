@@ -4,7 +4,18 @@ class UrlsController < ApplicationController
   end
 
   def create
-    @url = Url.create(url_params)
+    @url = Url.new(url_params)
+    respond_to do |format|
+      if @url.save
+        format.html { }
+        format.js { }
+        format.json { }
+      else
+        format.html { }
+        format.js { }
+        format.json { }
+      end
+    end
   end
 
   private
