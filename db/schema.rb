@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20171015194331) do
   enable_extension "plpgsql"
 
   create_table "urls", force: :cascade do |t|
-    t.string   "full_address"
+    t.string   "full_address",             null: false
     t.integer  "visit_count",  default: 0
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
