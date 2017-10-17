@@ -6,15 +6,16 @@ class UrlsController < ApplicationController
   end
 
   def create
-    @url = Url.find_or_initialize_by(url_params)
     respond_to do |format|
+      @url = Url.find_or_initialize_by(url_params)
       if @url.save
-        format.html { redirect_to root_url, notice: 'url link created successfully'}
-        format.js { }
-        format.json { }
+        @friendly_url = @url.base_translation_to_friendly_path
+        # need to convert to json here b/c friendly_url is a string not an object :\ ugly
+        format.json { render json: @friendly_url.to_json }
+        format.html { redirect_to urls_url }
       else
-        flash[:error] = @url.error.full_messages
-        render :index
+        format.json { render json: { errors: @url.errors.full_messages }, status: 422 }
+        format.html { render :index }
       end
     end
   end
