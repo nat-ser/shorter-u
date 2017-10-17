@@ -1,6 +1,7 @@
 class UrlsController < ApplicationController
   def index
     @url = Url.new
+    @top_urls = Url.order('visit_count DESC').limit(100)
   end
 
   def create
