@@ -5,17 +5,14 @@ class UrlsController < ApplicationController
   end
 
   def create
-    respond_to do |format|
-      @url = Url.find_or_initialize_by(url_params)
-      if @url.save
-        @friendly_url = url_path(@url)
-        # need to convert to json here b/c friendly_url is a string not an object :\ ugly
-        format.json { render json: @friendly_url.to_json }
-        format.html { redirect_to urls_url }
-      else
-        format.json { render json: { error: @url.errors.full_messages.first }, status: 422 }
-        format.html { render :index }
-      end
+    respond_to :json
+    @url = Url.find_or_initialize_by(url_params)
+    if @url.save
+      @friendly_url = url_path(@url)
+      # need to convert to json here b/c friendly_url is a string not an object :\ ugly
+      render json: @friendly_url.to_json
+    else
+      render json: { error: @url.errors.full_messages.first }, status: 422
     end
   end
 
