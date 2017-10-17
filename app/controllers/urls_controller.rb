@@ -1,6 +1,4 @@
 class UrlsController < ApplicationController
-  before_action :full_url_address, only: [:show]
-
   def index
     @url = Url.new
   end
@@ -9,12 +7,12 @@ class UrlsController < ApplicationController
     respond_to do |format|
       @url = Url.find_or_initialize_by(url_params)
       if @url.save
-        @friendly_url = @url.base_translation_to_friendly_path
+        @friendly_url = url_path(@url)
         # need to convert to json here b/c friendly_url is a string not an object :\ ugly
         format.json { render json: @friendly_url.to_json }
         format.html { redirect_to urls_url }
       else
-        format.json { render json: { errors: @url.errors.full_messages }, status: 422 }
+        format.json { render json: { error: @url.errors.full_messages.first }, status: 422 }
         format.html { render :index }
       end
     end
@@ -36,6 +34,6 @@ class UrlsController < ApplicationController
   end
 
   def url
-    @url ||= Url.from_base_translation(params)
+    @url ||= Url.find_by_friendly_id(params)
   end
 end
