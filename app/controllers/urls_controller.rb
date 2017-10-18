@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 class UrlsController < ApplicationController
   def index
     @url = Url.new
-    @top_urls = Url.order('visit_count DESC').limit(100)
+    @top_urls = Url.order("visit_count DESC").limit(100)
   end
 
   def create
     respond_to :json
     @url = Url.find_or_initialize_by(url_params)
     if @url.save
-      @friendly_url = url_path(@url)
-      # need to convert to json here b/c friendly_url is a string not an object :\ ugly
-      render json: @friendly_url.to_json
+      @friendly_url = url_url(@url)
+      render json: { url: @friendly_url }
     else
       render json: { error: @url.errors.full_messages.first }, status: 422
     end
@@ -32,6 +33,6 @@ class UrlsController < ApplicationController
   end
 
   def url
-    @url ||= Url.find_by_friendly_id(params)
+    @url ||= Url.find_by_friendly_id(params[:friendly_url])
   end
 end
