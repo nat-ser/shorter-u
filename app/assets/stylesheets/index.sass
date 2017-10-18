@@ -1,35 +1,56 @@
+$natly-purple: #0D0F6C
+$white: #FFFFFF
+$error: #F6BEB1
+$cheery-yellow: #F1F6B4
+$somber-purple: #0D0132
+
 body
-  padding-top: 20px
-  padding-bottom: 20px
+  padding-top: 10em
   font-size: 16px
-  line-height: 1.42857143
   background-image: image-url('darker-mango.jpg')
-  padding-top: 20em
 
-  navbar
-    background-color: #F3F4FB
-
+  .navbar
     .brand-title
-      font-size: 3em
+      color: $natly-purple
 
   .new_url
-    opacity: .7
     margin-top: 1em
     margin-bottom: 1em
-    color: #4561F1
+
+    .url-field
+      opacity: .8
+      background-color: $white
+      font-weight: bold
+
+    .url-shorten-btn
+      background-color: $natly-purple
+      color: $white
 
   #error-msg
-    color: #F6BEB1
+    color: $error
     display: none
     margin: 1em
 
   .short-link
-    background-color: #ffffff
+    background-color: $white
     padding: 1em
     display: none
-    color: #4561F1
-    opacity: .7
+    color: $natly-purple
     font-size: .8em
+    font-weight: bold
+    margin-bottom: 4em
+    margin-top: 4em
 
   .top-urls
-    color: #A7B4F5
+    color: $cheery-yellow
+    opacity: .7
+    background-color: $somber-purple
+    font-weight: bold
+
+    tr:hover
+      color: $natly-purple
+      font-weight: bold
+
+  .table-title
+    color: $white
+    padding-bottom: 1em
