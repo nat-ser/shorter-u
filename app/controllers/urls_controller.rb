@@ -10,7 +10,7 @@ class UrlsController < ApplicationController
     respond_to :json
     @url = Url.find_or_initialize_by(url_params)
     if @url.save
-      render json: { url: friendly_url @url }
+      render json: { url: friendly_url(@url) }
     else
       render json: { error: @url.errors.full_messages.first }, status: 422
     end
