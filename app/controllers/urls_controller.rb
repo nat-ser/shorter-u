@@ -33,6 +33,6 @@ class UrlsController < ApplicationController
   end
 
   def url
-    @url ||= Url.find_by_friendly_id(params[:friendly_url])
+    @url ||= Url.find_by_friendly_id(params[:friendly_id])
   end
 end
