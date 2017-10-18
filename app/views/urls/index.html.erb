@@ -1,7 +1,9 @@
-<header>
-  <h1 class="text-center">shorter<span>U</span></h1>
-  <p class="text-center">A url shortener to shorten urls!</p>
-</header>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+      <ul><%= image_tag "brand.png", size: "100x100", class: "navbar-left" %></ul>
+      <ul><h1 class="navbar-text navbar-right brand-title">Nat.Ly</h1></ul>
+  </div>
+</nav>
 
 <%= render "form" %>
 <%= render "shortlink_container" %>
