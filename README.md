@@ -1,24 +1,50 @@
-# README
+# Nat.Ly
+## awesomer version of `bit.ly`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
+##### Configuration
+* Ruby version - 2.4.0
+* Rails version - Rails 5.0.6
 
-Things you may want to cover:
+Postgres is a dependency of the app. It must be installed and running. Easiest way is to use [homebrew](http://brew.sh/).
+##### Installing Postgres
+```
+brew install postgres
+echo "export PGDATA='/usr/local/var/postgres'" >> ~/.bash_profile
+source ~/.bash_profile
+```
 
-* Ruby version
+##### Running Postgres
+```
+pg_ctl start
+```
 
-* System dependencies
+##### Database tasks
+  - `rake db:setup`
+  - `rake db:seed`
 
-* Configuration
+##### Running the app.
+```
+bundle
+rails s
+```
 
-* Database creation
+##### RUBOCOP
+###### Run rubocop with chosen settings for all or specific files
+- run `rubocop` in console which returns offenses occording to default preferences found @
+https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+- to disable some Cops, overide preferences in `.rubocop.yml`
 
-* Database initialization
+###### Autocorrect
+- run `rubocop --auto-correct` to auto-correct as much as possible - ex: spacing you messed up
 
-* How to run the test suite
+###### Easy way to go through each offense using `to_do` file
+- run `rubocop --auto-gen-config` to create a `.rubocop_todo.yml`
+- to use the todo file, uncomment out `inherit_from: .rubocop_todo.yml` in `.rubocop.yml`
+- to correct offenses one by one, comment out the one you want to correct in the todo file
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+------------------------------
+##### Future Directions
+- normalize urls -> `http://google.com/` and `http://google.com` would get saved as the same url
+- display top 100 in a cooler way
+- add es6
