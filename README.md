@@ -1,5 +1,7 @@
 # Nat.Ly
-## awesomer version of `bit.ly`
+## *awesomer version of `bit.ly`*
+
+[APP url](https://natly.herokuapp.com/)
 
 ## Setup
 ##### Configuration
